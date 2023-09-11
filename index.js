@@ -28,6 +28,7 @@ buttonElement.addEventListener('click', () => {
 })
 
 function refreshList() {
+  inputElement.value = ''
   listContainerElement.innerHTML = ''
   for (let i = 0; i < todoListItems.length; i++) {
     const todoItem = todoListItems[i]
