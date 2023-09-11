@@ -23,17 +23,19 @@ refreshList()
 
 buttonElement.addEventListener('click', () => {
   const newTodoItem = inputElement.value
-  todoListItems.append(newTodoItem)
+  todoListItems.push(newTodoItem)
   refreshList()
 })
 
 function refreshList() {
   listContainerElement.innerHTML = ''
-  for (const todoItem of todoListItems) {
+  for (let i = 0; i < todoListItems.length; i++) {
+    const todoItem = todoListItems[i]
     const newListItem = document.createElement('li')
     const deleteButton = document.createElement('button')
     deleteButton.addEventListener('click', () => {
-      console.log('HELLO')
+      todoListItems.splice(i, 1)
+      refreshList()
     })
     deleteButton.innerText = 'Delete'
     newListItem.innerText = `${todoItem} `
