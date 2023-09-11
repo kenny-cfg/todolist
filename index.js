@@ -13,5 +13,6 @@ const buttonElement = buttonElements[0]
 const inputElement = inputElements[0]
 
 buttonElement.addEventListener('click', () => {
-  console.log('Button clicked')
+  const newTodoItem = inputElement.value
+  console.log('Button clicked, input is: ', newTodoItem)
 })
