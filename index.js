@@ -1,6 +1,7 @@
 const buttonElements = document.getElementsByTagName('button')
 const inputElements = document.getElementsByTagName('input')
 const listContainerElements = document.getElementsByTagName('ul')
+const todoListItems = ['TODO FROM JS 1', 'TODO FROM JS 2', 'TODO FROM JS 3']
 
 if (buttonElements.length !== 1) {
   throw new Error('Only one button allowed')
@@ -18,9 +19,19 @@ const buttonElement = buttonElements[0]
 const inputElement = inputElements[0]
 const listContainerElement = listContainerElements[0]
 
+refreshList()
+
 buttonElement.addEventListener('click', () => {
   const newTodoItem = inputElement.value
-  const newListItemElement = document.createElement('li')
-  newListItemElement.innerText = newTodoItem
-  listContainerElement.append(newListItemElement)
+  todoListItems.append(newTodoItem)
+  refreshList()
 })
+
+function refreshList() {
+  listContainerElement.innerHTML = ''
+  for (const todoItem of todoListItems) {
+    const newListItem = document.createElement('li')
+    newListItem.innerText = todoItem
+    listContainerElement.append(newListItem)
+  }
+}
